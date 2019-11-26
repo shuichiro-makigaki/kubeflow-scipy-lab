@@ -31,6 +31,7 @@ RUN rm -rf ~/.cache/yarn $CONDA_DIR/share/jupyter/lab/staging
 ENV JUPYTER_ENABLE_LAB yes
 ENV GRANT_SUDO yes
 ENV RESTARTABLE yes
+ENV PATH ~/.local/bin:$PATH
 
 USER root
 COPY before-notebook-hook.sh /usr/local/bin/before-notebook.d/
