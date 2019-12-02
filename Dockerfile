@@ -2,7 +2,7 @@ FROM jupyter/scipy-notebook
 
 USER root
 RUN apt-get update
-RUN apt-get -y install curl tig gnupg apt-transport-https
+RUN apt-get -y install curl tig gnupg apt-transport-https less dnsutils
 RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/*
 
