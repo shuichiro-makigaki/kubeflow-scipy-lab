@@ -22,6 +22,7 @@ RUN jupyter labextension install \
     @jupyterlab/toc \
     @jupyterlab/git \
     @jupyterlab/celltags \
+    @jupyterlab/plotly-extension \
     nbdime-jupyterlab \
     jupyterlab-system-monitor
 RUN jupyter labextension update --all
