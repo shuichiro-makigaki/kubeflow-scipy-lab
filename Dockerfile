@@ -15,7 +15,8 @@ RUN conda install \
     vim \
     awscli \
     papermill \
-    plotly
+    plotly \
+    jq
 RUN conda update --all
 RUN jupyter labextension install jupyterlab-topbar-extension
 RUN jupyter labextension install \
