@@ -7,7 +7,8 @@ RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/*
 
 USER jovyan
-RUN pip install nbresuse
+RUN pip install nbresuse 
+RUN pip install --pre jupyter-lsp
 RUN conda install \
     nbdime \
     jupyterlab-git \
@@ -16,17 +17,23 @@ RUN conda install \
     awscli \
     papermill \
     plotly \
-    jq
+    jq \
+    python-language-server
 RUN conda update --all
-RUN jupyter labextension install jupyterlab-topbar-extension
-RUN jupyter labextension install \
+RUN jupyter labextension install --no-build \
     @jupyterlab/toc \
     @jupyterlab/git \
     @jupyterlab/celltags \
     @jupyterlab/plotly-extension \
     nbdime-jupyterlab \
-    jupyterlab-system-monitor
-RUN jupyter labextension update --all
+    jupyterlab-system-monitor \
+    @krassowski/jupyterlab-lsp \
+    @jupyterlab/google-drive \
+    jupyter-threejs \
+    jupyterlab-drawio \
+    jupyterlab-s3-browser
+RUN jupyter labextension update --all --no-build
+RUN jupyter lab build
 RUN conda clean --all -f -y
 RUN npm cache clean --force
 RUN rm -rf ~/.cache/yarn $CONDA_DIR/share/jupyter/lab/staging
